@@ -10,10 +10,9 @@ export const Home = (props) => {
   const [data, setData] = React.useState('Not Found');
   const [scan, setScan] = React.useState(false);
   async function onUpdate(err, result) {
-    if (result && data !== result.text) {
+    if (result) {
       setData(result.text);
-      // console.log(result);
-      props.setBarcode(result);
+      console.log(result);
     }
   }
   return (
@@ -31,6 +30,9 @@ export const Home = (props) => {
       )}
 
       <p>{data}</p>
+      {data && (
+        <button onClick={() => props.setBarcode(data)}>look up barcode</button>
+      )}
     </div>
   );
 };

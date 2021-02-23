@@ -31,7 +31,6 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
-    "react-native-camera": "^3.42.3",
     "react-webcam-barcode-scanner": "0.0.2-rc2",
     "sequelize": "^6.3.5"
   },

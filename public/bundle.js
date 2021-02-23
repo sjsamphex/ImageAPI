@@ -30243,10 +30243,9 @@ const Home = props => {
   const [scan, setScan] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
 
   async function onUpdate(err, result) {
-    if (result && data !== result.text) {
-      setData(result.text); // console.log(result);
-
-      props.setBarcode(result);
+    if (result) {
+      setData(result.text);
+      console.log(result);
     }
   }
 
@@ -30258,7 +30257,9 @@ const Home = props => {
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => props.setBarcode(data)
+  }, "look up barcode"));
 };
 /**
  * CONTAINER
