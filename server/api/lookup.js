@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
       const fdaResults = await axios.get(
         `https://api.fda.gov/food/enforcement.json?search=product_description:${query}`
       );
-      console.log(fdaResults);
+      console.log(fdaResults.data);
       //make a search to FDA
       //https://api.fda.gov/food/enforcement.json?search=product_description:'canyon+bakehouse'
     }
