@@ -30259,7 +30259,11 @@ const Home = props => {
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => props.setBarcode(data)
-  }, "look up barcode"));
+  }, "look up barcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => onUpdate('', {
+      text: '0853584002201'
+    })
+  }, "look up fake barcode if camera fails"));
 };
 /**
  * CONTAINER

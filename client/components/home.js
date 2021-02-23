@@ -33,6 +33,9 @@ export const Home = (props) => {
       {data && (
         <button onClick={() => props.setBarcode(data)}>look up barcode</button>
       )}
+      <button onClick={() => onUpdate('', { text: '0853584002201' })}>
+        look up fake barcode if camera fails
+      </button>
     </div>
   );
 };
