@@ -30240,16 +30240,19 @@ const Home = props => {
     email
   } = props;
   const [data, setData] = react__WEBPACK_IMPORTED_MODULE_0___default().useState('Not Found');
+  const [scan, setScan] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
 
   async function onUpdate(err, result) {
-    if (result) {
-      setData(result.text);
-      console.log(result);
+    if (result && data !== result.text) {
+      setData(result.text); // console.log(result);
+
       props.setBarcode(result);
     }
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => setScan(!scan)
+  }, "scan toggle button"), scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
     width: 500,
     height: 500,
     onUpdate: (err, result) => {

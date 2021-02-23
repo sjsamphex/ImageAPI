@@ -8,24 +8,28 @@ import { setBarcode } from '../store/product';
 export const Home = (props) => {
   const { email } = props;
   const [data, setData] = React.useState('Not Found');
+  const [scan, setScan] = React.useState(false);
   async function onUpdate(err, result) {
-    if (result) {
+    if (result && data !== result.text) {
       setData(result.text);
-      console.log(result);
+      // console.log(result);
       props.setBarcode(result);
     }
   }
   return (
     <div>
       <h3>Welcome, {email}</h3>
+      <button onClick={() => setScan(!scan)}>scan toggle button</button>
+      {scan && (
+        <BarcodeScannerComponent
+          width={500}
+          height={500}
+          onUpdate={(err, result) => {
+            onUpdate(err, result);
+          }}
+        />
+      )}
 
-      <BarcodeScannerComponent
-        width={500}
-        height={500}
-        onUpdate={(err, result) => {
-          onUpdate(err, result);
-        }}
-      />
       <p>{data}</p>
     </div>
   );

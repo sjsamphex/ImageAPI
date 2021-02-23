@@ -9,13 +9,14 @@ module.exports = router;
 
 router.post('/', async (req, res, next) => {
   try {
-    const barcode = req.body.bc;
+    const barcode = req.body.bc.text;
+    console.log('express is gonna look up this barcode ', barcode);
     let bcresult = await bc.lookup({
-      key: process.env.BARCODEKEY,
+      key: '0acahhb1lv05gmgdnob1dyn9cj1v7x' || process.env.BARCODEKEY,
       barcode,
     });
     console.log(bcresult);
-    res.json(users);
+    res.json(bcresult);
   } catch (err) {
     next(err);
   }
