@@ -1,7 +1,7 @@
 {
-  "name": "image_api",
+  "name": "is_it_recalled",
   "version": "2.0.0",
-  "description": "Playing with image api",
+  "description": "Scan food to see if FDA has recalled it",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
