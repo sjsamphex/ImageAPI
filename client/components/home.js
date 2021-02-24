@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
 import { setBarcode } from '../store/product';
 import ProductInfo from './ProductInfo';
+import RecallInfo from './RecallInfo';
 /**
  * COMPONENT
  */
@@ -48,8 +49,15 @@ export const Home = (props) => {
         <p>{props.state.product.bcData.barcodeData.products[0].product_name}</p>
       )} */}
       {props.state.product.bcData.barcodeData && <ProductInfo />}
-      {props.state.product.bcData.fdaData && (
+
+      {/* {props.state.product.bcData.fdaData && (
         <p>{product.bcData.fdaData.results[0].reason_for_recall}</p>
+      )} */}
+      <br />
+      {props.state.product.bcData.fdaData ? (
+        <RecallInfo />
+      ) : (
+        'no recalls found yet'
       )}
     </div>
   );

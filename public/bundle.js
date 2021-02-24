@@ -33759,6 +33759,55 @@ const mapDispatch = dispatch => {
 
 /***/ }),
 
+/***/ "./client/components/RecallInfo.js":
+/*!*****************************************!*\
+  !*** ./client/components/RecallInfo.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/Paper.js");
+
+
+
+
+class RecallInfo extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
+  render() {
+    const styles = {
+      paper: {}
+    };
+    const {
+      results
+    } = this.props;
+    console.log(results);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Ah shit there was a recall"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, results.map((result, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+      key: idx
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, result.product_description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, result.reason_for_recall)))));
+  }
+
+}
+
+const mapState = state => {
+  return {
+    results: state.product.bcData.fdaData.results
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapState, mapDispatch)(RecallInfo));
+
+/***/ }),
+
 /***/ "./client/components/auth-form.js":
 /*!****************************************!*\
   !*** ./client/components/auth-form.js ***!
@@ -33870,6 +33919,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store_product__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/product */ "./client/store/product.js");
 /* harmony import */ var _ProductInfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ProductInfo */ "./client/components/ProductInfo.js");
+/* harmony import */ var _RecallInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RecallInfo */ "./client/components/RecallInfo.js");
+
 
 
 
@@ -33913,7 +33964,7 @@ const Home = props => {
     })
   }, "look up fake barcode if camera fails"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => props.setBarcode(data)
-  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), props.state.product.bcData.fdaData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, product.bcData.fdaData.results[0].reason_for_recall));
+  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet');
 };
 /**
  * CONTAINER
