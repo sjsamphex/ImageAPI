@@ -15,6 +15,10 @@ export const Home = (props) => {
       console.log(result);
     }
   }
+  const product = props.state.product;
+  if (product.bcData.fdaData) {
+    console.log(product.bcData.fdaData.results[0]);
+  }
   return (
     <div>
       <h2>Welcome, {email}</h2>
@@ -38,6 +42,12 @@ export const Home = (props) => {
       <br />
       {data && (
         <button onClick={() => props.setBarcode(data)}>Look this up!!</button>
+      )}
+      {props.state.product.bcData.barcodeData && (
+        <p>{props.state.product.bcData.barcodeData.products[0].product_name}</p>
+      )}
+      {props.state.product.bcData.fdaData && (
+        <p>{product.bcData.fdaData.results[0].reason_for_recall}</p>
       )}
     </div>
   );

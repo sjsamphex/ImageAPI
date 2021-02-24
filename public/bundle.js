@@ -30249,6 +30249,12 @@ const Home = props => {
     }
   }
 
+  const product = props.state.product;
+
+  if (product.bcData.fdaData) {
+    console.log(product.bcData.fdaData.results[0]);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => setScan(!scan)
   }, "Toggle the Scanner!"), scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
@@ -30263,7 +30269,7 @@ const Home = props => {
     })
   }, "look up fake barcode if camera fails"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => props.setBarcode(data)
-  }, "Look this up!!"));
+  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.state.product.bcData.barcodeData.products[0].product_name), props.state.product.bcData.fdaData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, product.bcData.fdaData.results[0].reason_for_recall));
 };
 /**
  * CONTAINER
