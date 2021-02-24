@@ -1,8 +1,8 @@
 * {
-  background-image: url('bread.jpg');
+  background-image: url('bread.jpeg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
+  background-position: right bottom;
   background-color: #fefccb;
 }
 body {
