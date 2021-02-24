@@ -8,6 +8,9 @@ const Product = db.define('product', {
   barcodeData: {
     type: Sequelize.JSON,
   },
+  fdaData: {
+    type: Sequelize.JSON,
+  },
 });
 
 module.exports = Product;

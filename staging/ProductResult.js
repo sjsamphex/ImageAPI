@@ -1,4 +1,4 @@
-export const productResult = {
+const productResult = {
   products: [
     {
       barcode_number: '853584002201',
@@ -42,5 +42,7 @@ export const productResult = {
       stores: [Array],
       reviews: [],
     },
-  ];
-}
+  ],
+};
+
+module.exports = { productResult };

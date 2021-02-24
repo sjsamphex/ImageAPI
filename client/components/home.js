@@ -6,7 +6,7 @@ import { setBarcode } from '../store/product';
  * COMPONENT
  */
 export const Home = (props) => {
-  const { email } = props;
+  const { email } = props.state.auth;
   const [data, setData] = React.useState('Not Found');
   const [scan, setScan] = React.useState(false);
   async function onUpdate(err, result) {
@@ -17,8 +17,9 @@ export const Home = (props) => {
   }
   return (
     <div>
-      <h3>Welcome, {email}</h3>
-      <button onClick={() => setScan(!scan)}>scan toggle button</button>
+      <h2>Welcome, {email}</h2>
+      <h2>You may need to accept camera permissions :)</h2>
+      <button onClick={() => setScan(!scan)}>Toggle the Scanner!</button>
       {scan && (
         <BarcodeScannerComponent
           width={500}
@@ -29,13 +30,15 @@ export const Home = (props) => {
         />
       )}
 
-      <p>{data}</p>
-      {data && (
-        <button onClick={() => props.setBarcode(data)}>look up barcode</button>
-      )}
+      <p>Barcode Number scanned: {data}</p>
+
       <button onClick={() => onUpdate('', { text: '0853584002201' })}>
         look up fake barcode if camera fails
       </button>
+      <br />
+      {data && (
+        <button onClick={() => props.setBarcode(data)}>Look this up!!</button>
+      )}
     </div>
   );
 };

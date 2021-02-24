@@ -30238,7 +30238,7 @@ __webpack_require__.r(__webpack_exports__);
 const Home = props => {
   const {
     email
-  } = props;
+  } = props.state.auth;
   const [data, setData] = react__WEBPACK_IMPORTED_MODULE_0___default().useState('Not Found');
   const [scan, setScan] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
 
@@ -30249,21 +30249,21 @@ const Home = props => {
     }
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => setScan(!scan)
-  }, "scan toggle button"), scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
+  }, "Toggle the Scanner!"), scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
     width: 500,
     height: 500,
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => props.setBarcode(data)
-  }, "look up barcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcode Number scanned: ", data), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => onUpdate('', {
       text: '0853584002201'
     })
-  }, "look up fake barcode if camera fails"));
+  }, "look up fake barcode if camera fails"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => props.setBarcode(data)
+  }, "Look this up!!"));
 };
 /**
  * CONTAINER

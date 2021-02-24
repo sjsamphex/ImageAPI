@@ -1,6 +1,6 @@
 //https://api.fda.gov/food/enforcement.json?search=product_description:%22Canyon+Bakehouse+LLC%22
 
-export const FDA = {
+const FDA = {
   meta: {
     disclaimer:
       'Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.',
@@ -44,3 +44,4 @@ export const FDA = {
     },
   ],
 };
+module.exports = { FDA };
