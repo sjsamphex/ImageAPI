@@ -4,6 +4,8 @@ import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
 import { setBarcode } from '../store/product';
 import ProductInfo from './ProductInfo';
 import RecallInfo from './RecallInfo';
+import Container from '@material-ui/core/Container';
+
 /**
  * COMPONENT
  */
@@ -26,15 +28,17 @@ export const Home = (props) => {
       <h2>Welcome, {email}</h2>
       <h2>You may need to accept camera permissions :)</h2>
       <button onClick={() => setScan(!scan)}>Toggle the Scanner!</button>
-      {scan && (
-        <BarcodeScannerComponent
-          width={500}
-          height={500}
-          onUpdate={(err, result) => {
-            onUpdate(err, result);
-          }}
-        />
-      )}
+      <Container>
+        {scan && (
+          <BarcodeScannerComponent
+            width={'50%'}
+            // height={250}
+            onUpdate={(err, result) => {
+              onUpdate(err, result);
+            }}
+          />
+        )}
+      </Container>
 
       <p>Barcode Number scanned: {data}</p>
 
