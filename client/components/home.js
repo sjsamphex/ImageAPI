@@ -49,11 +49,11 @@ export const Home = (props) => {
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
       <br />
-      {/* {props.state.product.bcData.fdaData ? (
+      {props.state.product.bcData.fdaData ? (
         <RecallInfo />
       ) : (
         'no recalls found yet'
-      )} */}
+      )}
     </div>
   );
 };

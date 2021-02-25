@@ -28,6 +28,8 @@ router.post('/', async (req, res, next) => {
       let company;
       if (!product.barcodeData) {
         // console.log(barcode);
+        //https://world.openfoodfacts.org/api/v0/product/0853584002201.json
+        //URL to read data for a product: https://world.openfoodfacts.org/api/v0/product/[barcode].json
         let request = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
         let bcresult = await axios.get(request);
         // console.log(bcresult);
