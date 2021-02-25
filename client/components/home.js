@@ -14,12 +14,12 @@ export const Home = (props) => {
   async function onUpdate(err, result) {
     if (result) {
       setData(result.text);
-      console.log(result);
+      // console.log(result);
     }
   }
   const product = props.state.product;
   if (product.bcData.fdaData) {
-    console.log(product.bcData.fdaData.results[0]);
+    // console.log(product.bcData.fdaData.results[0]);
   }
   return (
     <div>
@@ -45,20 +45,15 @@ export const Home = (props) => {
       {data && (
         <button onClick={() => props.setBarcode(data)}>Look this up!!</button>
       )}
-      {/* {props.state.product.bcData.barcodeData && (
-        <p>{props.state.product.bcData.barcodeData.products[0].product_name}</p>
-      )} */}
+
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
-      {/* {props.state.product.bcData.fdaData && (
-        <p>{product.bcData.fdaData.results[0].reason_for_recall}</p>
-      )} */}
       <br />
-      {props.state.product.bcData.fdaData ? (
+      {/* {props.state.product.bcData.fdaData ? (
         <RecallInfo />
       ) : (
         'no recalls found yet'
-      )}
+      )} */}
     </div>
   );
 };

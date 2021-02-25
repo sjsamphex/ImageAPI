@@ -4,28 +4,18 @@ import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 
 class ProductInfo extends Component {
-  componentDidMount() {}
-
   render() {
+    if (!this.props.product) {
+      return null;
+    }
     const styles = {
       paper: {},
     };
     return (
       <Paper>
         <ul>
-          {this.props.products.map((product, idx) => (
-            <li key={idx}>
-              <ul>
-                {Object.keys(product)
-                  .filter((key) => product[key])
-                  .map((key) => (
-                    <li key={key}>
-                      {key}:{product[key]}
-                    </li>
-                  ))}
-              </ul>
-            </li>
-          ))}
+          <li>{this.props.product.brands}</li>
+          <li>{this.props.product.product_name}</li>
         </ul>
       </Paper>
     );
@@ -34,7 +24,7 @@ class ProductInfo extends Component {
 
 const mapState = (state) => {
   return {
-    products: state.product.bcData.barcodeData.products,
+    product: state.product.bcData.barcodeData.product,
   };
 };
 

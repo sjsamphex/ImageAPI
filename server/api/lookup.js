@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
       }
       let company;
       if (!product.barcodeData) {
-        console.log(barcode);
+        // console.log(barcode);
         let request = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
         let bcresult = await axios.get(request);
         // console.log(bcresult);
@@ -39,12 +39,12 @@ router.post('/', async (req, res, next) => {
       if (!product.fdaData) {
         company = product.barcodeData.product.brands;
 
-        console.log('we are working with this company:', company);
+        // console.log('we are working with this company:', company);
         let query = company.split(' ').join('+');
         const fdaResults = await axios.get(
           `https://api.fda.gov/food/enforcement.json?search=product_description:"${query}"`
         );
-        console.log(fdaResults.data);
+        // console.log(fdaResults.data);
         product.fdaData = fdaResults.data;
         await product.save();
       }

@@ -33730,24 +33730,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ProductInfo extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
-  componentDidMount() {}
-
   render() {
+    if (!this.props.product) {
+      return null;
+    }
+
     const styles = {
       paper: {}
     };
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, this.props.products.map((product, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      key: idx
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, Object.keys(product).filter(key => product[key]).map(key => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-      key: key
-    }, key, ":", product[key])))))));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, this.props.product.brands), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, this.props.product.product_name)));
   }
 
 }
 
 const mapState = state => {
   return {
-    products: state.product.bcData.barcodeData.products
+    product: state.product.bcData.barcodeData.product
   };
 };
 
@@ -33939,15 +33937,13 @@ const Home = props => {
 
   async function onUpdate(err, result) {
     if (result) {
-      setData(result.text);
-      console.log(result);
+      setData(result.text); // console.log(result);
     }
   }
 
   const product = props.state.product;
 
-  if (product.bcData.fdaData) {
-    console.log(product.bcData.fdaData.results[0]);
+  if (product.bcData.fdaData) {// console.log(product.bcData.fdaData.results[0]);
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -33964,7 +33960,7 @@ const Home = props => {
     })
   }, "look up fake barcode if camera fails"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => props.setBarcode(data)
-  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet');
+  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null));
 };
 /**
  * CONTAINER
