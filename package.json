@@ -1,8 +1,12 @@
 {
   "name": "is_it_recalled",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Scan food to see if FDA has recalled it",
   "main": "index.js",
+  "engines": {
+    "node": "12.19.0",
+    "npm": "6.14.8"
+  },
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
@@ -22,7 +26,6 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
-    "barcodelookup": "^1.0.6",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
