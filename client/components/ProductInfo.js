@@ -14,7 +14,7 @@ class ProductInfo extends Component {
     return (
       <Paper>
         <ul>
-          <li>{this.props.product.brands}</li>
+          <li>{this.props.product.brands || this.props.product.brand_owner}</li>
           <li>{this.props.product.product_name}</li>
         </ul>
       </Paper>
