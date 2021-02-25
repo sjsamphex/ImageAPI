@@ -36912,7 +36912,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   componentDidMount() {
     this.props.fetchProducts();
