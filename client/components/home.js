@@ -5,6 +5,8 @@ import { setBarcode } from '../store/product';
 import ProductInfo from './ProductInfo';
 import RecallInfo from './RecallInfo';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 /**
  * COMPONENT
@@ -41,14 +43,25 @@ export const Home = (props) => {
       </Container>
 
       <p>Barcode Number scanned: {data}</p>
-
-      <button onClick={() => onUpdate('', { text: '0853584002201' })}>
-        look up fake barcode if camera fails
-      </button>
-      <br />
-      {data && (
-        <button onClick={() => props.setBarcode(data)}>Look this up!!</button>
-      )}
+      <ButtonGroup>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => onUpdate('', { text: '0853584002201' })}
+        >
+          look up fake barcode if camera fails
+        </Button>
+        <br />
+        {data && (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.setBarcode(data)}
+          >
+            Look this up!!
+          </Button>
+        )}
+      </ButtonGroup>
 
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 

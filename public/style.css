@@ -1,12 +1,10 @@
-* {
+body {
+  font-family: sans-serif;
   background-image: url('bread.jpeg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right bottom;
   background-color: #fefccb;
-}
-body {
-  font-family: sans-serif;
 }
 
 a {
