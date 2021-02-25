@@ -29,7 +29,13 @@ export const Home = (props) => {
     <div>
       <h2>Welcome, {email}</h2>
       <h2>You may need to accept camera permissions :)</h2>
-      <button onClick={() => setScan(!scan)}>Toggle the Scanner!</button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setScan(!scan)}
+      >
+        Toggle the Scanner!
+      </Button>
       <Container>
         {scan && (
           <BarcodeScannerComponent
@@ -43,25 +49,20 @@ export const Home = (props) => {
       </Container>
 
       <p>Barcode Number scanned: {data}</p>
-      <ButtonGroup>
+
+      <br />
+      {data && (
         <Button
           variant="contained"
           color="primary"
-          onClick={() => onUpdate('', { text: '0853584002201' })}
+          onClick={() => {
+            setScan(false);
+            props.setBarcode(data);
+          }}
         >
-          look up fake barcode if camera fails
+          Look this up!!
         </Button>
-        <br />
-        {data && (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => props.setBarcode(data)}
-          >
-            Look this up!!
-          </Button>
-        )}
-      </ButtonGroup>
+      )}
 
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
@@ -71,6 +72,17 @@ export const Home = (props) => {
       ) : (
         'no recalls found yet'
       )}
+
+      <div className="staging">
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          onClick={() => onUpdate('', { text: '0853584002201' })}
+        >
+          Staging: Fake Barcode if Camera fails
+        </Button>
+      </div>
     </div>
   );
 };

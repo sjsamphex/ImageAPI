@@ -24,3 +24,10 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.staging {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
