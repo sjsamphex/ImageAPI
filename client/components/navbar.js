@@ -3,31 +3,73 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>Is it Recalled?</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/products">Products</Link>
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
 
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
+const Navbar = ({ handleClick, isLoggedIn }) => {
+  const classes = useStyles();
+  return (
+    <div>
+      <nav>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar>
+              <EmojiFoodBeverageIcon
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+              />
+
+              <Typography variant="h4" className={classes.title}>
+                Is it Recalled?
+              </Typography>
+              {isLoggedIn ? (
+                <div>
+                  <Button color="inherit" component={Link} to="/home">
+                    Home
+                  </Button>
+                  <Button color="inherit" component={Link} to="/products">
+                    Products
+                  </Button>
+                  <a href="#" onClick={handleClick}>
+                    <Button color="inherit">Logout</Button>
+                  </a>
+                </div>
+              ) : (
+                <div>
+                  <Button color="inherit" component={Link} to="/login">
+                    Login
+                  </Button>
+                  <Button color="inherit" component={Link} to="/signup">
+                    Sign Up
+                  </Button>
+                </div>
+              )}
+            </Toolbar>
+          </AppBar>
         </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-);
+      </nav>
+    </div>
+  );
+};
 
 /**
  * CONTAINER
