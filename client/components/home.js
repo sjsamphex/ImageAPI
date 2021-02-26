@@ -41,7 +41,7 @@ export const Home = (props) => {
     },
   };
   return (
-    <div>
+    <Container>
       <h2>Welcome, {email}</h2>
       <h3>You may need to accept camera permissions :)</h3>
       <Button
@@ -115,7 +115,7 @@ export const Home = (props) => {
           Staging: Fake Barcode if Camera fails
         </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 

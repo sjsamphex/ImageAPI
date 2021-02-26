@@ -9,6 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { fetchProducts } from '../store/allProducts';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 class ProductTable extends React.Component {
   componentDidMount() {
@@ -28,41 +30,43 @@ class ProductTable extends React.Component {
     };
 
     return (
-      <div>
-        <TableContainer>
-          <Table stickyHeader style={styles.Table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left">Barcode</TableCell>
-                <TableCell align="left">Product Name</TableCell>
-                <TableCell align="left">Brand/Company</TableCell>
-                <TableCell align="right">Recalled?</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.props.products.map((product) => (
-                <TableRow key={product.id}>
-                  <TableCell>{product.barcode}</TableCell>
-                  <TableCell component="th" scope="row">
-                    {product.product_name}
-                  </TableCell>
-                  <TableCell align="left">
-                    {product.brand ||
-                      product.brand_owner ||
-                      product.brands ||
-                      product.company}
-                  </TableCell>
-                  <TableCell align="right">
-                    {product.recallInfo.results.length > 0
-                      ? `Recalled: ${product.recallInfo.results[0].report_date}`
-                      : 'No Recall found'}
-                  </TableCell>
+      <Container>
+        <Paper variant="elevation" elevation={24}>
+          <TableContainer>
+            <Table stickyHeader style={styles.Table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">Barcode</TableCell>
+                  <TableCell align="left">Product Name</TableCell>
+                  <TableCell align="left">Brand/Company</TableCell>
+                  <TableCell align="right">Recalled?</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+              </TableHead>
+              <TableBody>
+                {this.props.products.map((product) => (
+                  <TableRow key={product.id}>
+                    <TableCell>{product.barcode}</TableCell>
+                    <TableCell component="th" scope="row">
+                      {product.product_name}
+                    </TableCell>
+                    <TableCell align="left">
+                      {product.brand ||
+                        product.brand_owner ||
+                        product.brands ||
+                        product.company}
+                    </TableCell>
+                    <TableCell align="right">
+                      {product.recallInfo.results.length > 0
+                        ? `Recalled: ${product.recallInfo.results[0].report_date}`
+                        : 'No Recall found'}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Container>
     );
   }
 } //end class
