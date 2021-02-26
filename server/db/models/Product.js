@@ -10,6 +10,9 @@ const Product = db.define(
     barcodeData: {
       type: Sequelize.JSON,
     },
+    status: {
+      type: Sequelize.BOOLEAN,
+    },
     fdaData: {
       type: Sequelize.JSON,
     },

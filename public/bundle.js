@@ -36618,7 +36618,7 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
 
 const mapState = state => {
   return {
-    products: state.allProducts.products.map(bc => {
+    products: state.allProducts.products.filter(p => p.status).map(bc => {
       let product = bc.barcodeData.product;
       console.log(product);
       product.recallInfo = bc.fdaData;
