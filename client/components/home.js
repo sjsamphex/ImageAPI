@@ -14,10 +14,14 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 export const Home = (props) => {
   const { email } = props.state.auth;
   const [data, setData] = React.useState('Not Found');
+  const [dataset, setDataSet] = React.useState([]);
   const [scan, setScan] = React.useState(false);
   async function onUpdate(err, result) {
     if (result) {
       setData(result.text);
+      if (!dataset.includes(result.text)) {
+        setDataSet([...dataset, result.text]);
+      }
       // console.log(result);
     }
   }
@@ -28,7 +32,7 @@ export const Home = (props) => {
   return (
     <div>
       <h2>Welcome, {email}</h2>
-      <h2>You may need to accept camera permissions :)</h2>
+      <h3>You may need to accept camera permissions :)</h3>
       <Button
         variant="contained"
         color="primary"
@@ -48,10 +52,28 @@ export const Home = (props) => {
         )}
       </Container>
 
-      <p>Barcode Number scanned: {data}</p>
+      <p>Barcode Number scanned here: {data}</p>
+      <p>Barcodes scanned so far:</p>
+      <ul>
+        {dataset.map((dat) => (
+          <li key={dat}>
+            {dat}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                setScan(false);
+                props.setBarcode(dat);
+              }}
+            >
+              Get product Info
+            </Button>
+          </li>
+        ))}
+      </ul>
 
       <br />
-      {data && (
+      {/* {data && (
         <Button
           variant="contained"
           color="primary"
@@ -62,7 +84,7 @@ export const Home = (props) => {
         >
           Look this up!!
         </Button>
-      )}
+      )} */}
 
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 

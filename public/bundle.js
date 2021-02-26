@@ -36819,11 +36819,17 @@ const Home = props => {
     email
   } = props.state.auth;
   const [data, setData] = react__WEBPACK_IMPORTED_MODULE_0___default().useState('Not Found');
+  const [dataset, setDataSet] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
   const [scan, setScan] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
 
   async function onUpdate(err, result) {
     if (result) {
-      setData(result.text); // console.log(result);
+      setData(result.text);
+
+      if (!dataset.includes(result.text)) {
+        setDataSet([...dataset, result.text]);
+      } // console.log(result);
+
     }
   }
 
@@ -36832,7 +36838,7 @@ const Home = props => {
   if (product.bcData.fdaData) {// console.log(product.bcData.fdaData.results[0]);
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "contained",
     color: "primary",
     onClick: () => setScan(!scan)
@@ -36842,14 +36848,16 @@ const Home = props => {
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcode Number scanned: ", data), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), data && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcode Number scanned here: ", data), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+    key: dat
+  }, dat, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "contained",
     color: "primary",
     onClick: () => {
       setScan(false);
-      props.setBarcode(data);
+      props.setBarcode(dat);
     }
-  }, "Look this up!!"), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Get product Info")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "staging"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "outlined",
