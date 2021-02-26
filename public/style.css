@@ -31,3 +31,8 @@ form div {
   justify-content: flex-end;
   align-items: flex-end;
 }
+
+.recalled {
+  color: red;
+  text-decoration: double;
+}

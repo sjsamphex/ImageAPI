@@ -12,7 +12,10 @@ class RecallInfo extends Component {
     console.log(results);
     return (
       <Paper>
-        <h3>Ah shit there's at least one recall</h3>
+        <h3 className="recalled">
+          {' '}
+          &#128169; Ah shit there's at least one recall &#128169;
+        </h3>
         <ul>
           {results.map((result, idx) => (
             <ul key={idx}>
