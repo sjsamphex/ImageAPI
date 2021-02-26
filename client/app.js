@@ -1,15 +1,33 @@
-import React from 'react'
+import React from 'react';
 
-import {Navbar} from './components'
-import Routes from './routes'
+import { Navbar } from './components';
+import Routes from './routes';
+
+import CssBaseline from '@material-ui/core/CssBaseline';
+import {
+  createMuiTheme,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    background: {
+      default: '#fefccb',
+    },
+  },
+});
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Routes />
-    </div>
-  )
-}
+    <React.Fragment>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar />
+        <Routes />
+      </ThemeProvider>
+    </React.Fragment>
+  );
+};
 
-export default App
+export default App;

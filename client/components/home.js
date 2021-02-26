@@ -55,7 +55,6 @@ export const Home = (props) => {
         {scan && (
           <BarcodeScannerComponent
             width={'50%'}
-            // height={250}
             onUpdate={(err, result) => {
               onUpdate(err, result);
             }}
@@ -63,17 +62,19 @@ export const Home = (props) => {
         )}
         <div>
           <p>{data}</p>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={() => {
-              setScan(false);
-              props.setBarcode(data);
-            }}
-          >
-            Get product Info
-          </Button>
+          {!isNaN(parseInt(data)) && (
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={() => {
+                setScan(false);
+                props.setBarcode(data);
+              }}
+            >
+              Get product Info
+            </Button>
+          )}
         </div>
       </Container>
       <p>Barcodes scanned so far:</p>
