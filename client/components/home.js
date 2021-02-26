@@ -72,20 +72,6 @@ export const Home = (props) => {
         ))}
       </ul>
 
-      <br />
-      {/* {data && (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            setScan(false);
-            props.setBarcode(data);
-          }}
-        >
-          Look this up!!
-        </Button>
-      )} */}
-
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
       <br />

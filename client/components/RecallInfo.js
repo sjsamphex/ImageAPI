@@ -12,12 +12,13 @@ class RecallInfo extends Component {
     console.log(results);
     return (
       <Paper>
-        <h3>Ah shit there was a recall</h3>
+        <h3>Ah shit there's at least one recall</h3>
         <ul>
           {results.map((result, idx) => (
             <ul key={idx}>
-              <li>{result.product_description}</li>
-              <li>{result.reason_for_recall}</li>
+              <li>Report Date: {result.report_date}</li>
+              <li>FDA Product Description: {result.product_description}</li>
+              <li>Reported Reason for Recall: {result.reason_for_recall}</li>
             </ul>
           ))}
         </ul>
