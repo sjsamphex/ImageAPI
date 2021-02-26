@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
+import HomeIcon from '@material-ui/icons/Home';
+import TimelineIcon from '@material-ui/icons/Timeline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,13 +46,23 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
               </Typography>
               {isLoggedIn ? (
                 <div>
-                  <Button color="inherit" component={Link} to="/home">
+                  <Button
+                    startIcon={<HomeIcon />}
+                    color="inherit"
+                    component={Link}
+                    to="/home"
+                  >
                     Home
                   </Button>
-                  <Button color="inherit" component={Link} to="/products">
+                  <Button
+                    startIcon={<TimelineIcon />}
+                    color="inherit"
+                    component={Link}
+                    to="/products"
+                  >
                     Products
                   </Button>
-                  <a href="#" onClick={handleClick}>
+                  <a href="#" onClick={handleClick} tabIndex="-1">
                     <Button color="inherit">Logout</Button>
                   </a>
                 </div>

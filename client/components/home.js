@@ -6,8 +6,7 @@ import ProductInfo from './ProductInfo';
 import RecallInfo from './RecallInfo';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { FormHelperText } from '@material-ui/core';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 /**
  * COMPONENT
@@ -61,9 +60,9 @@ export const Home = (props) => {
           />
         )}
         <div>
-          <p>{data}</p>
           {!isNaN(parseInt(data)) && (
             <Button
+              endIcon={<PageviewIcon />}
               variant="contained"
               color="primary"
               size="small"
@@ -72,7 +71,7 @@ export const Home = (props) => {
                 props.setBarcode(data);
               }}
             >
-              Get product Info
+              {data}
             </Button>
           )}
         </div>
@@ -81,8 +80,8 @@ export const Home = (props) => {
       <ul>
         {dataset.map((dat) => (
           <li key={dat}>
-            {dat}
             <Button
+              endIcon={<PageviewIcon />}
               variant="contained"
               color="primary"
               size="small"
@@ -91,7 +90,7 @@ export const Home = (props) => {
                 props.setBarcode(dat);
               }}
             >
-              Get product Info
+              {dat}
             </Button>
           </li>
         ))}
