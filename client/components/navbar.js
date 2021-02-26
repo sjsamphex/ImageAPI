@@ -14,6 +14,7 @@ import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: '1rem',
   },
   menuButton: {
     marginRight: theme.spacing(2),

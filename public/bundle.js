@@ -39367,7 +39367,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__.default)(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginBottom: '1rem'
   },
   menuButton: {
     marginRight: theme.spacing(2)
