@@ -26,7 +26,6 @@ class ProductTable extends React.Component {
         width: 130,
       },
     };
-    // console.log('products', this.props.products);
 
     return (
       <div>

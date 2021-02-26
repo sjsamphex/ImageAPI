@@ -36587,8 +36587,7 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       Cell: {
         width: 130
       }
-    }; // console.log('products', this.props.products);
-
+    };
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__.default, {
       stickyHeader: true,
       style: styles.Table,
