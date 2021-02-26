@@ -36620,7 +36620,6 @@ const mapState = state => {
   return {
     products: state.allProducts.products.filter(p => p.status).map(bc => {
       let product = bc.barcodeData.product;
-      console.log(product);
       product.recallInfo = bc.fdaData;
       product.barcode = bc.barcode;
       return product;
@@ -36832,7 +36831,7 @@ const Home = props => {
         }
 
         return dataset;
-      }); // console.log(result);
+      });
     }
   }
 
@@ -36860,7 +36859,15 @@ const Home = props => {
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+    variant: "contained",
+    color: "primary",
+    size: "small",
+    onClick: () => {
+      setScan(false);
+      props.setBarcode(data);
+    }
+  }, "Get product Info"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: dat
   }, dat, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "contained",

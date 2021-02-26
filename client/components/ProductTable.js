@@ -74,7 +74,6 @@ const mapState = (state) => {
       .filter((p) => p.status)
       .map((bc) => {
         let product = bc.barcodeData.product;
-        console.log(product);
         product.recallInfo = bc.fdaData;
         product.barcode = bc.barcode;
         return product;

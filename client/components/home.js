@@ -27,8 +27,6 @@ export const Home = (props) => {
         }
         return dataset;
       });
-
-      // console.log(result);
     }
   }
   const product = props.state.product;
@@ -65,6 +63,17 @@ export const Home = (props) => {
         )}
         <div>
           <p>{data}</p>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={() => {
+              setScan(false);
+              props.setBarcode(data);
+            }}
+          >
+            Get product Info
+          </Button>
         </div>
       </Container>
       <p>Barcodes scanned so far:</p>
