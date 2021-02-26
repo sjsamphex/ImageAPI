@@ -15,7 +15,13 @@ const _fetchProducts = (products) => ({ type: FETCH_PRODUCTS, products });
  * THUNK CREATORS
  */
 export const fetchProducts = () => async (dispatch) => {
-  const data = await axios.get('/api/products/');
+  const token = window.localStorage.getItem('token');
+
+  const data = await axios.get('/api/products/', {
+    headers: {
+      authorization: token,
+    },
+  });
   if (data) {
     return dispatch(_fetchProducts(data.data));
   }

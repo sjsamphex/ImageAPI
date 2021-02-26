@@ -10,6 +10,8 @@ module.exports = router;
 
 router.post('/', async (req, res, next) => {
   try {
+    const user = await User.findByToken(req.headers.authorization);
+
     const barcode = req.body.bc;
     console.log('received this barcode from front end', barcode);
 
@@ -18,12 +20,14 @@ router.post('/', async (req, res, next) => {
       let product = await Product.findOne({
         where: {
           barcode,
+          userId: user.id,
         },
       });
       if (!product) {
         console.log('creating product in db');
         product = await Product.create({
           barcode,
+          userId: user.id,
         });
       }
       let company;

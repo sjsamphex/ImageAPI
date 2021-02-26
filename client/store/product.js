@@ -1,9 +1,6 @@
 import axios from 'axios';
 import history from '../history';
 
-const storage = () => window.localStorage;
-const TOKEN = 'token';
-
 /**
  * ACTION TYPES
  */
@@ -18,14 +15,19 @@ const _setBarcode = (bc, bcData) => ({ type: SET_BARCODE, bc, bcData });
  * THUNK CREATORS
  */
 export const setBarcode = (bc) => async (dispatch) => {
-  const token = storage().getItem(TOKEN);
+  const token = window.localStorage.getItem('token');
 
-  const data = await axios.post('/api/lookup/', {
-    bc,
-    headers: {
-      authorization: token,
+  const data = await axios.post(
+    '/api/lookup/',
+    {
+      bc,
     },
-  });
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
   if (data) {
     console.log(data);
     return dispatch(_setBarcode(bc, data.data));

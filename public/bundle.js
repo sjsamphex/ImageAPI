@@ -36610,7 +36610,7 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       align: "left"
     }, product.brand || product.brand_owner || product.brands || product.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_7__.default, {
       align: "right"
-    }, product.recallInfo.results.length > 0 ? 'Recalled' : 'No Recall found')))))));
+    }, product.recallInfo.results.length > 0 ? `Recalled: ${product.recallInfo.results[0].report_date}` : 'No Recall found')))))));
   }
 
 } //end class
@@ -37163,7 +37163,12 @@ const _fetchProducts = products => ({
 
 
 const fetchProducts = () => async dispatch => {
-  const data = await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/products/');
+  const token = window.localStorage.getItem('token');
+  const data = await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/products/', {
+    headers: {
+      authorization: token
+    }
+  });
 
   if (data) {
     return dispatch(_fetchProducts(data.data));
@@ -37343,10 +37348,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
 
 
-
-const storage = () => window.localStorage;
-
-const TOKEN = 'token';
 /**
  * ACTION TYPES
  */
@@ -37367,9 +37368,10 @@ const _setBarcode = (bc, bcData) => ({
 
 
 const setBarcode = bc => async dispatch => {
-  const token = storage().getItem(TOKEN);
+  const token = window.localStorage.getItem('token');
   const data = await axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/lookup/', {
-    bc,
+    bc
+  }, {
     headers: {
       authorization: token
     }

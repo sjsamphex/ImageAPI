@@ -55,7 +55,7 @@ class ProductTable extends React.Component {
                   </TableCell>
                   <TableCell align="right">
                     {product.recallInfo.results.length > 0
-                      ? 'Recalled'
+                      ? `Recalled: ${product.recallInfo.results[0].report_date}`
                       : 'No Recall found'}
                   </TableCell>
                 </TableRow>

@@ -6,7 +6,14 @@ module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.findAll({});
+    const user = await User.findByToken(req.headers.authorization);
+    console.log(user);
+    const products = await Product.findAll({
+      where: {
+        status: true,
+        userId: user.id,
+      },
+    });
     res.send(products);
   } catch (err) {
     next(err);
