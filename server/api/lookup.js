@@ -39,6 +39,10 @@ router.post('/', async (req, res, next) => {
         await product.save();
         // company = bcresult.products[0].brand;
       }
+      if (product.barcodeData.status == 0) {
+        res.send(null);
+        return;
+      }
       if (!product.fdaData) {
         company =
           product.barcodeData.product.brands ||
@@ -57,6 +61,48 @@ router.post('/', async (req, res, next) => {
 
       //make a search to FDA
       //https://api.fda.gov/food/enforcement.json?search=product_description:'canyon+bakehouse'
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/barcode', async (req, res, next) => {
+  try {
+    const barcode = req.body.bc;
+    console.log('received this barcode from front end', barcode);
+
+    // console.log('express is gonna look up this barcode ', barcode);
+    if (barcode) {
+      let product = await Product.findOne({
+        where: {
+          barcode,
+        },
+      });
+      if (!product) {
+        console.log('creating product in db');
+        product = await Product.create({
+          barcode,
+        });
+      }
+      let company;
+      if (!product.barcodeData) {
+        console.log(product.barcode);
+        //https://world.openfoodfacts.org/api/v0/product/0853584002201.json
+        //URL to read data for a product: https://world.openfoodfacts.org/api/v0/product/[barcode].json
+        let request = `https://world.openfoodfacts.org/api/v0/product/${product.barcode}.json`;
+        let bcresult = await axios.get(request);
+        // console.log(bcresult);
+        // let bcresult = productResult;
+        product.barcodeData = bcresult.data;
+        await product.save();
+        // company = bcresult.products[0].brand;
+      }
+      if (product.barcodeData.status === 1) {
+        res.send(product);
+      } else {
+        res.send(null);
+      }
     }
   } catch (err) {
     next(err);

@@ -7,6 +7,7 @@ import RecallInfo from './RecallInfo';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { FormHelperText } from '@material-ui/core';
 
 /**
  * COMPONENT
@@ -19,9 +20,14 @@ export const Home = (props) => {
   async function onUpdate(err, result) {
     if (result) {
       setData(result.text);
-      if (!dataset.includes(result.text)) {
-        setDataSet([...dataset, result.text]);
-      }
+
+      setDataSet((dataset) => {
+        if (!dataset.includes(result.text)) {
+          dataset.push(result.text);
+        }
+        return dataset;
+      });
+
       // console.log(result);
     }
   }
@@ -29,6 +35,13 @@ export const Home = (props) => {
   if (product.bcData.fdaData) {
     // console.log(product.bcData.fdaData.results[0]);
   }
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+  };
   return (
     <div>
       <h2>Welcome, {email}</h2>
@@ -40,7 +53,7 @@ export const Home = (props) => {
       >
         Toggle the Scanner!
       </Button>
-      <Container>
+      <Container style={styles.container}>
         {scan && (
           <BarcodeScannerComponent
             width={'50%'}
@@ -50,9 +63,10 @@ export const Home = (props) => {
             }}
           />
         )}
+        <div>
+          <p>{data}</p>
+        </div>
       </Container>
-
-      <p>Barcode Number scanned here: {data}</p>
       <p>Barcodes scanned so far:</p>
       <ul>
         {dataset.map((dat) => (
@@ -61,6 +75,7 @@ export const Home = (props) => {
             <Button
               variant="contained"
               color="primary"
+              size="small"
               onClick={() => {
                 setScan(false);
                 props.setBarcode(dat);
@@ -71,7 +86,6 @@ export const Home = (props) => {
           </li>
         ))}
       </ul>
-
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
       <br />

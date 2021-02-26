@@ -18,8 +18,13 @@ const _setBarcode = (bc, bcData) => ({ type: SET_BARCODE, bc, bcData });
  * THUNK CREATORS
  */
 export const setBarcode = (bc) => async (dispatch) => {
+  const token = storage().getItem(TOKEN);
+
   const data = await axios.post('/api/lookup/', {
     bc,
+    headers: {
+      authorization: token,
+    },
   });
   if (data) {
     console.log(data);

@@ -36587,8 +36587,8 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       Cell: {
         width: 130
       }
-    };
-    console.log('products', this.props.products);
+    }; // console.log('products', this.props.products);
+
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__.default, {
       stickyHeader: true,
       style: styles.Table,
@@ -36810,6 +36810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * COMPONENT
  */
@@ -36825,11 +36826,13 @@ const Home = props => {
   async function onUpdate(err, result) {
     if (result) {
       setData(result.text);
+      setDataSet(dataset => {
+        if (!dataset.includes(result.text)) {
+          dataset.push(result.text);
+        }
 
-      if (!dataset.includes(result.text)) {
-        setDataSet([...dataset, result.text]);
-      } // console.log(result);
-
+        return dataset;
+      }); // console.log(result);
     }
   }
 
@@ -36838,21 +36841,31 @@ const Home = props => {
   if (product.bcData.fdaData) {// console.log(product.bcData.fdaData.results[0]);
   }
 
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    }
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome, ", email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "You may need to accept camera permissions :)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "contained",
     color: "primary",
     onClick: () => setScan(!scan)
-  }, "Toggle the Scanner!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_7__.default, null, scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
+  }, "Toggle the Scanner!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_7__.default, {
+    style: styles.container
+  }, scan && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_webcam_barcode_scanner__WEBPACK_IMPORTED_MODULE_2___default()), {
     width: '50%' // height={250}
     ,
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcode Number scanned here: ", data), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, data))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: dat
   }, dat, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
     variant: "contained",
     color: "primary",
+    size: "small",
     onClick: () => {
       setScan(false);
       props.setBarcode(dat);
@@ -37354,8 +37367,12 @@ const _setBarcode = (bc, bcData) => ({
 
 
 const setBarcode = bc => async dispatch => {
+  const token = storage().getItem(TOKEN);
   const data = await axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/lookup/', {
-    bc
+    bc,
+    headers: {
+      authorization: token
+    }
   });
 
   if (data) {
