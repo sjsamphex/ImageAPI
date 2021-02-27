@@ -39092,7 +39092,9 @@ __webpack_require__.r(__webpack_exports__);
 class RecallInfo extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   render() {
     const styles = {
-      paper: {}
+      paper: {
+        margin: '1rem'
+      }
     };
     const {
       results
@@ -39100,7 +39102,8 @@ class RecallInfo extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     console.log(results);
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_2__.default, {
       variant: "elevation",
-      elevation: 24
+      elevation: 24,
+      style: styles.paper
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
       className: "recalled"
     }, ' ', "\uD83D\uDCA9 Ah shit there's ", results.length, " recall(s) \uD83D\uDCA9")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__.default, {

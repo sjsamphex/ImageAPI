@@ -12,12 +12,14 @@ import TableRow from '@material-ui/core/TableRow';
 class RecallInfo extends Component {
   render() {
     const styles = {
-      paper: {},
+      paper: {
+        margin: '1rem',
+      },
     };
     const { results } = this.props;
     console.log(results);
     return (
-      <Paper variant="elevation" elevation={24}>
+      <Paper variant="elevation" elevation={24} style={styles.paper}>
         <center>
           <h3 className="recalled">
             {' '}
