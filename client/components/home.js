@@ -111,7 +111,7 @@ export const Home = (props) => {
           size="small"
           onClick={() => onUpdate('', { text: '0853584002201' })}
         >
-          Staging: Fake Barcode if Camera fails
+          Example Barcode
         </Button>
       </div>
     </Container>
