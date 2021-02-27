@@ -4,10 +4,13 @@ const db = require('./db');
 
 const User = require('./models/user');
 const Product = require('./models/Product');
-
+const Recalls = require('./models/Recalls');
 //associations could go here!
 User.hasMany(Product);
 Product.belongsTo(User);
+
+Product.hasMany(Recalls);
+Recalls.belongsTo(Product);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
@@ -31,5 +34,6 @@ module.exports = {
   models: {
     User,
     Product,
+    Recalls,
   },
 };
