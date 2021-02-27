@@ -32,10 +32,26 @@ router.post('/', async (req, res, next) => {
           product.barcodeData.product.brand_owner;
 
         console.log('we are working with this company:', company);
-        let query = company.split(' ').join('+');
-        const fdaResults = await axios.get(
-          `https://api.fda.gov/food/enforcement.json?limit=10&sort=report_date:desc&search=product_description:"${query}"`
-        );
+        let query = company
+          .replace(/\s\s+/g, ' ')
+          .replace(/,/g, '')
+          .replace(/(\b\S.+\b)(?=.*\1)/g, '')
+          .split(' ')
+          .join('+');
+        let fdaResults;
+        try {
+          fdaResults = await axios.get(
+            `https://api.fda.gov/food/enforcement.json?limit=10&sort=report_date:desc&search=product_description:"${query}"`
+          );
+        } catch (ex) {
+          // console.log(ex.response.statusText);
+          if (ex.response.statusText === 'Not Found') {
+            product.status = false;
+            res.send(product);
+            return null;
+          }
+        }
+
         // console.log(fdaResults.data);
         if (!recall) {
           Promise.all(

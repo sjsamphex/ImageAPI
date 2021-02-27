@@ -96,13 +96,13 @@ export const Home = (props) => {
         ))}
       </ButtonGroup>
       {props.state.product.bcData.barcodeData && <ProductInfo />}
+      {props.state.product.bcData.barcodeData &&
+        !props.state.product.bcData.status && (
+          <p>No recalls for this product :)</p>
+        )}
 
       <br />
-      {props.state.product.bcData.fdaData ? (
-        <RecallInfo />
-      ) : (
-        'no recalls found yet'
-      )}
+      {props.state.product.bcData.fdaData && <RecallInfo />}
 
       <div className="staging">
         <Button

@@ -12,6 +12,7 @@ const Product = db.define(
     },
     status: {
       type: Sequelize.BOOLEAN,
+      defaultValue: true,
     },
     fdaData: {
       type: Sequelize.JSON,
@@ -43,7 +44,10 @@ Product.findBarCode = async (barcode, userId) => {
     let bcresult = await axios.get(request);
     product.barcodeData = bcresult.data;
     // console.log(product.barcodeData.status);
-    product.status = product.barcodeData.status == 1 ? true : false;
+    if (product.barcodeData.status == 0) {
+      product.status = false;
+    }
+    // product.status = product.barcodeData.status == 1 ? true : false;
     await product.save();
   }
   // if (!product.status) {
