@@ -15,32 +15,6 @@ router.post('/', async (req, res, next) => {
 
     // console.log('express is gonna look up this barcode ', barcode);
     if (barcode) {
-      // let product = await Product.findOne({
-      //   where: {
-      //     barcode,
-      //     userId: user.id,
-      //   },
-      // });
-      // if (!product) {
-      //   console.log('creating product in db');
-      //   product = await Product.create({
-      //     barcode,
-      //     userId: user.id,
-      //   });
-      // }
-      // let company;
-      // if (!product.barcodeDataStatus) {
-      //   console.log(product.barcode);
-      //   //https://world.openfoodfacts.org/api/v0/product/0853584002201.json
-      //   //URL to read data for a product: https://world.openfoodfacts.org/api/v0/product/[barcode].json
-      //   let request = `https://world.openfoodfacts.org/api/v0/product/${product.barcode}.json`;
-      //   let bcresult = await axios.get(request);
-      //   product.barcodeData = bcresult.data;
-      //   console.log(product.barcodeData.status);
-      //   product.status = product.barcodeData.status == 1 ? true : false;
-      //   await product.save();
-      // }
-
       const product = await Product.findBarCode(barcode, user.id);
       if (!product.status) {
         res.send(null);
@@ -51,10 +25,10 @@ router.post('/', async (req, res, next) => {
           product.barcodeData.product.brands ||
           product.barcodeData.product.brand_owner;
 
-        // console.log('we are working with this company:', company);
+        console.log('we are working with this company:', company);
         let query = company.split(' ').join('+');
         const fdaResults = await axios.get(
-          `https://api.fda.gov/food/enforcement.json?search=product_description:"${query}"`
+          `https://api.fda.gov/food/enforcement.json?limit=10&sort=report_date:desc&search=product_description:"${query}"`
         );
         // console.log(fdaResults.data);
         product.fdaData = fdaResults.data;
@@ -63,7 +37,7 @@ router.post('/', async (req, res, next) => {
       res.send(product);
 
       //make a search to FDA
-      //https://api.fda.gov/food/enforcement.json?search=product_description:'canyon+bakehouse'
+      //https://api.fda.gov/food/enforcement.json?limit=10&sort=report_date:desc&search=product_description:%22canyon+bakehouse%22
     }
   } catch (err) {
     next(err);
