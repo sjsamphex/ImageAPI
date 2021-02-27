@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Product },
+  models: { User, Product, Recalls },
 } = require('../db');
 module.exports = router;
 
@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
         status: true,
         userId: user.id,
       },
+      include: Recalls,
     });
     res.send(products);
   } catch (err) {

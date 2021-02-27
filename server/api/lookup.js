@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Product },
+  models: { User, Product, Recalls },
 } = require('../db');
 
 const axios = require('axios');
@@ -20,6 +20,12 @@ router.post('/', async (req, res, next) => {
         res.send(null);
         return;
       }
+      let recall = await Recalls.findOne({
+        where: {
+          productId: product.id,
+        },
+      });
+
       if (!product.fdaData) {
         company =
           product.barcodeData.product.brands ||
@@ -31,6 +37,18 @@ router.post('/', async (req, res, next) => {
           `https://api.fda.gov/food/enforcement.json?limit=10&sort=report_date:desc&search=product_description:"${query}"`
         );
         // console.log(fdaResults.data);
+        if (!recall) {
+          Promise.all(
+            fdaResults.data.results.map((result) =>
+              Recalls.create({
+                recall_number: result.recall_number,
+                product_description: result.product_description,
+                report_date: result.report_date,
+                reason_for_recall: result.reason_for_recall,
+              })
+            )
+          );
+        }
         product.fdaData = fdaResults.data;
         await product.save();
       }

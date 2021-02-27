@@ -4,14 +4,11 @@ const db = require('../db');
 const Recalls = db.define(
   'recalls',
   {
-    company: {
+    recall_number: {
       type: Sequelize.STRING,
     },
     product_description: {
       type: Sequelize.STRING,
-    },
-    status: {
-      type: Sequelize.BOOLEAN,
     },
     report_date: {
       type: Sequelize.STRING,
@@ -22,5 +19,7 @@ const Recalls = db.define(
   },
   { timestamps: false }
 );
+
+Recalls.getData = async () => {};
 
 module.exports = Recalls;
