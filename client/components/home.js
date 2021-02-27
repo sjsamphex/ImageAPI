@@ -6,6 +6,7 @@ import ProductInfo from './ProductInfo';
 import RecallInfo from './RecallInfo';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 /**
@@ -60,7 +61,7 @@ export const Home = (props) => {
           />
         )}
         <div>
-          {!isNaN(parseInt(data)) && (
+          {scan && !isNaN(parseInt(data)) && (
             <Button
               endIcon={<PageviewIcon />}
               variant="contained"
@@ -77,24 +78,23 @@ export const Home = (props) => {
         </div>
       </Container>
       <p>Barcodes scanned so far:</p>
-      <ul>
+      <ButtonGroup orientation="vertical">
         {dataset.map((dat) => (
-          <li key={dat}>
-            <Button
-              endIcon={<PageviewIcon />}
-              variant="contained"
-              color="primary"
-              size="small"
-              onClick={() => {
-                setScan(false);
-                props.setBarcode(dat);
-              }}
-            >
-              {dat}
-            </Button>
-          </li>
+          <Button
+            key={dat}
+            endIcon={<PageviewIcon />}
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={() => {
+              setScan(false);
+              props.setBarcode(dat);
+            }}
+          >
+            {dat}
+          </Button>
         ))}
-      </ul>
+      </ButtonGroup>
       {props.state.product.bcData.barcodeData && <ProductInfo />}
 
       <br />

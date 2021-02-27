@@ -2079,6 +2079,347 @@ var TouchRipple = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(fun
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/ButtonGroup/ButtonGroup.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/ButtonGroup/ButtonGroup.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => /* binding */ styles,
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_is__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@material-ui/core/esm/utils/capitalize.js");
+/* harmony import */ var _styles_colorManipulator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles/colorManipulator */ "./node_modules/@material-ui/core/esm/styles/colorManipulator.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+
+
+
+
+
+
+
+
+
+ // Force a side effect so we don't have any override priority issue.
+// eslint-disable-next-line no-unused-expressions
+
+_Button__WEBPACK_IMPORTED_MODULE_6__.default.styles;
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      display: 'inline-flex',
+      borderRadius: theme.shape.borderRadius
+    },
+
+    /* Styles applied to the root element if `variant="contained"`. */
+    contained: {
+      boxShadow: theme.shadows[2]
+    },
+
+    /* Styles applied to the root element if `disableElevation={true}`. */
+    disableElevation: {
+      boxShadow: 'none'
+    },
+
+    /* Pseudo-class applied to child elements if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {
+      width: '100%'
+    },
+
+    /* Styles applied to the root element if `orientation="vertical"`. */
+    vertical: {
+      flexDirection: 'column'
+    },
+
+    /* Styles applied to the children. */
+    grouped: {
+      minWidth: 40
+    },
+
+    /* Styles applied to the children if `orientation="horizontal"`. */
+    groupedHorizontal: {
+      '&:not(:first-child)': {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0
+      },
+      '&:not(:last-child)': {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0
+      }
+    },
+
+    /* Styles applied to the children if `orientation="vertical"`. */
+    groupedVertical: {
+      '&:not(:first-child)': {
+        borderTopRightRadius: 0,
+        borderTopLeftRadius: 0
+      },
+      '&:not(:last-child)': {
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0
+      }
+    },
+
+    /* Styles applied to the children if `variant="text"`. */
+    groupedText: {},
+
+    /* Styles applied to the children if `variant="text"` and `orientation="horizontal"`. */
+    groupedTextHorizontal: {
+      '&:not(:last-child)': {
+        borderRight: "1px solid ".concat(theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)')
+      }
+    },
+
+    /* Styles applied to the children if `variant="text"` and `orientation="vertical"`. */
+    groupedTextVertical: {
+      '&:not(:last-child)': {
+        borderBottom: "1px solid ".concat(theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)')
+      }
+    },
+
+    /* Styles applied to the children if `variant="text"` and `color="primary"`. */
+    groupedTextPrimary: {
+      '&:not(:last-child)': {
+        borderColor: (0,_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_7__.fade)(theme.palette.primary.main, 0.5)
+      }
+    },
+
+    /* Styles applied to the children if `variant="text"` and `color="secondary"`. */
+    groupedTextSecondary: {
+      '&:not(:last-child)': {
+        borderColor: (0,_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_7__.fade)(theme.palette.secondary.main, 0.5)
+      }
+    },
+
+    /* Styles applied to the children if `variant="outlined"`. */
+    groupedOutlined: {},
+
+    /* Styles applied to the children if `variant="outlined"` and `orientation="horizontal"`. */
+    groupedOutlinedHorizontal: {
+      '&:not(:first-child)': {
+        marginLeft: -1
+      },
+      '&:not(:last-child)': {
+        borderRightColor: 'transparent'
+      }
+    },
+
+    /* Styles applied to the children if `variant="outlined"` and `orientation="vertical"`. */
+    groupedOutlinedVertical: {
+      '&:not(:first-child)': {
+        marginTop: -1
+      },
+      '&:not(:last-child)': {
+        borderBottomColor: 'transparent'
+      }
+    },
+
+    /* Styles applied to the children if `variant="outlined"` and `color="primary"`. */
+    groupedOutlinedPrimary: {
+      '&:hover': {
+        borderColor: theme.palette.primary.main
+      }
+    },
+
+    /* Styles applied to the children if `variant="outlined"` and `color="secondary"`. */
+    groupedOutlinedSecondary: {
+      '&:hover': {
+        borderColor: theme.palette.secondary.main
+      }
+    },
+
+    /* Styles applied to the children if `variant="contained"`. */
+    groupedContained: {
+      boxShadow: 'none'
+    },
+
+    /* Styles applied to the children if `variant="contained"` and `orientation="horizontal"`. */
+    groupedContainedHorizontal: {
+      '&:not(:last-child)': {
+        borderRight: "1px solid ".concat(theme.palette.grey[400]),
+        '&$disabled': {
+          borderRight: "1px solid ".concat(theme.palette.action.disabled)
+        }
+      }
+    },
+
+    /* Styles applied to the children if `variant="contained"` and `orientation="vertical"`. */
+    groupedContainedVertical: {
+      '&:not(:last-child)': {
+        borderBottom: "1px solid ".concat(theme.palette.grey[400]),
+        '&$disabled': {
+          borderBottom: "1px solid ".concat(theme.palette.action.disabled)
+        }
+      }
+    },
+
+    /* Styles applied to the children if `variant="contained"` and `color="primary"`. */
+    groupedContainedPrimary: {
+      '&:not(:last-child)': {
+        borderColor: theme.palette.primary.dark
+      }
+    },
+
+    /* Styles applied to the children if `variant="contained"` and `color="secondary"`. */
+    groupedContainedSecondary: {
+      '&:not(:last-child)': {
+        borderColor: theme.palette.secondary.dark
+      }
+    }
+  };
+};
+var ButtonGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function ButtonGroup(props, ref) {
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'default' : _props$color,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
+      _props$disableElevati = props.disableElevation,
+      disableElevation = _props$disableElevati === void 0 ? false : _props$disableElevati,
+      _props$disableFocusRi = props.disableFocusRipple,
+      disableFocusRipple = _props$disableFocusRi === void 0 ? false : _props$disableFocusRi,
+      _props$disableRipple = props.disableRipple,
+      disableRipple = _props$disableRipple === void 0 ? false : _props$disableRipple,
+      _props$fullWidth = props.fullWidth,
+      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
+      _props$orientation = props.orientation,
+      orientation = _props$orientation === void 0 ? 'horizontal' : _props$orientation,
+      _props$size = props.size,
+      size = _props$size === void 0 ? 'medium' : _props$size,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'outlined' : _props$variant,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["children", "classes", "className", "color", "component", "disabled", "disableElevation", "disableFocusRipple", "disableRipple", "fullWidth", "orientation", "size", "variant"]);
+
+  var buttonClassName = (0,clsx__WEBPACK_IMPORTED_MODULE_5__.default)(classes.grouped, classes["grouped".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(orientation))], classes["grouped".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(variant))], classes["grouped".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(variant)).concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(orientation))], classes["grouped".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(variant)).concat(color !== 'default' ? (0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_8__.default)(color) : '')], disabled && classes.disabled);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    role: "group",
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__.default)(classes.root, className, fullWidth && classes.fullWidth, disableElevation && classes.disableElevation, variant === 'contained' && classes.contained, orientation === 'vertical' && classes.vertical),
+    ref: ref
+  }, other), react__WEBPACK_IMPORTED_MODULE_2__.Children.map(children, function (child) {
+    if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(child)) {
+      return null;
+    }
+
+    if (true) {
+      if ((0,react_is__WEBPACK_IMPORTED_MODULE_3__.isFragment)(child)) {
+        console.error(["Material-UI: The ButtonGroup component doesn't accept a Fragment as a child.", 'Consider providing an array instead.'].join('\n'));
+      }
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(child, {
+      className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__.default)(buttonClassName, child.props.className),
+      color: child.props.color || color,
+      disabled: child.props.disabled || disabled,
+      disableElevation: child.props.disableElevation || disableElevation,
+      disableFocusRipple: disableFocusRipple,
+      disableRipple: disableRipple,
+      fullWidth: fullWidth,
+      size: child.props.size || size,
+      variant: child.props.variant || variant
+    });
+  }));
+});
+ true ? ButtonGroup.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The content of the button group.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOf(['default', 'inherit', 'primary', 'secondary']),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().elementType),
+
+  /**
+   * If `true`, the buttons will be disabled.
+   */
+  disabled: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, no elevation is used.
+   */
+  disableElevation: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the button keyboard focus ripple will be disabled.
+   */
+  disableFocusRipple: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the button ripple effect will be disabled.
+   */
+  disableRipple: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * If `true`, the buttons will take up the full width of its container.
+   */
+  fullWidth: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+
+  /**
+   * The group orientation (layout flow direction).
+   */
+  orientation: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOf(['horizontal', 'vertical']),
+
+  /**
+   * The size of the button.
+   * `small` is equivalent to the dense button styling.
+   */
+  size: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOf(['large', 'medium', 'small']),
+
+  /**
+   * The variant to use.
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOf(['contained', 'outlined', 'text'])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_9__.default)(styles, {
+  name: 'MuiButtonGroup'
+})(ButtonGroup));
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/Container/Container.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/Container/Container.js ***!
@@ -39287,7 +39628,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RecallInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RecallInfo */ "./client/components/RecallInfo.js");
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core_ButtonGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/ButtonGroup */ "./node_modules/@material-ui/core/esm/ButtonGroup/ButtonGroup.js");
 /* harmony import */ var _material_ui_icons_Pageview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/icons/Pageview */ "./node_modules/@material-ui/icons/Pageview.js");
+
 
 
 
@@ -39345,7 +39688,7 @@ const Home = props => {
     onUpdate: (err, result) => {
       onUpdate(err, result);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, !isNaN(parseInt(data)) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, scan && !isNaN(parseInt(data)) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
     endIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_icons_Pageview__WEBPACK_IMPORTED_MODULE_8__.default, null),
     variant: "contained",
     color: "primary",
@@ -39354,9 +39697,10 @@ const Home = props => {
       setScan(false);
       props.setBarcode(data);
     }
-  }, data))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
-    key: dat
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
+  }, data))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Barcodes scanned so far:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_ButtonGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+    orientation: "vertical"
+  }, dataset.map(dat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
+    key: dat,
     endIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_icons_Pageview__WEBPACK_IMPORTED_MODULE_8__.default, null),
     variant: "contained",
     color: "primary",
@@ -39365,7 +39709,7 @@ const Home = props => {
       setScan(false);
       props.setBarcode(dat);
     }
-  }, dat)))), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, dat))), props.state.product.bcData.barcodeData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductInfo__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), props.state.product.bcData.fdaData ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RecallInfo__WEBPACK_IMPORTED_MODULE_5__.default, null) : 'no recalls found yet', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "staging"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
     variant: "outlined",
