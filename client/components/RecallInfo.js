@@ -22,19 +22,10 @@ class RecallInfo extends Component {
       <Paper variant="elevation" elevation={24} style={styles.paper}>
         <center>
           <h3 className="recalled">
-            {' '}
-            &#128169; Ah shit there's {results.length} recall(s) &#128169;
+            &#128169; Ah shit there's {results.length} recall
+            {results.length > 1 ? 's' : ''} &#128169;
           </h3>
         </center>
-        {/* <ul>
-          {results.map((result, idx) => (
-            <ul key={idx}>
-              <li>Report Date: {result.report_date}</li>
-              <li>FDA Product Description: {result.product_description}</li>
-              <li>Reported Reason for Recall: {result.reason_for_recall}</li>
-            </ul>
-          ))}
-        </ul> */}
         <TableContainer>
           <Table stickyHeader style={styles.Table} aria-label="simple table">
             <TableHead>

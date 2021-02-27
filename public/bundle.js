@@ -39447,7 +39447,7 @@ class RecallInfo extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       style: styles.paper
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
       className: "recalled"
-    }, ' ', "\uD83D\uDCA9 Ah shit there's ", results.length, " recall(s) \uD83D\uDCA9")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__.default, {
+    }, "\uD83D\uDCA9 Ah shit there's ", results.length, " recall", results.length > 1 ? 's' : '', " \uD83D\uDCA9")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableContainer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__.default, {
       stickyHeader: true,
       style: styles.Table,
       "aria-label": "simple table"
@@ -39718,7 +39718,7 @@ const Home = props => {
     onClick: () => onUpdate('', {
       text: '0853584002201'
     })
-  }, "Staging: Fake Barcode if Camera fails")));
+  }, "Example Barcode")));
 };
 /**
  * CONTAINER
