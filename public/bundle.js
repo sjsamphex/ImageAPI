@@ -39022,7 +39022,7 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       align: "left"
     }, "Brand/Company"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_9__.default, {
       align: "right"
-    }, "Recalled?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_10__.default, null, this.props.products.map(product => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_8__.default, {
+    }, "# Recalls"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_10__.default, null, this.props.products.map(product => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_8__.default, {
       key: product.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_9__.default, null, product.barcode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_9__.default, {
       component: "th",
@@ -39031,7 +39031,7 @@ class ProductTable extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compone
       align: "left"
     }, product.brand || product.brand_owner || product.brands || product.company), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_9__.default, {
       align: "right"
-    }, product.recallInfo.results.length > 0 ? `Recalled: ${product.recallInfo.results[0].report_date}` : 'No Recall found'))))))));
+    }, product.recalls.length))))))));
   }
 
 } //end class
@@ -39041,7 +39041,7 @@ const mapState = state => {
   return {
     products: state.allProducts.products.filter(p => p.status).map(bc => {
       let product = bc.barcodeData.product;
-      product.recallInfo = bc.fdaData;
+      product.recalls = bc.recalls;
       product.barcode = bc.barcode;
       return product;
     })

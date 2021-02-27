@@ -45,6 +45,7 @@ router.post('/', async (req, res, next) => {
                 product_description: result.product_description,
                 report_date: result.report_date,
                 reason_for_recall: result.reason_for_recall,
+                productId: product.id,
               })
             )
           );

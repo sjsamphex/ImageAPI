@@ -39,7 +39,7 @@ class ProductTable extends React.Component {
                   <TableCell align="left">Barcode</TableCell>
                   <TableCell align="left">Product Name</TableCell>
                   <TableCell align="left">Brand/Company</TableCell>
-                  <TableCell align="right">Recalled?</TableCell>
+                  <TableCell align="right"># Recalls</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -56,9 +56,7 @@ class ProductTable extends React.Component {
                         product.company}
                     </TableCell>
                     <TableCell align="right">
-                      {product.recallInfo.results.length > 0
-                        ? `Recalled: ${product.recallInfo.results[0].report_date}`
-                        : 'No Recall found'}
+                      {product.recalls.length}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -77,7 +75,7 @@ const mapState = (state) => {
       .filter((p) => p.status)
       .map((bc) => {
         let product = bc.barcodeData.product;
-        product.recallInfo = bc.fdaData;
+        product.recalls = bc.recalls;
         product.barcode = bc.barcode;
         return product;
       }),
